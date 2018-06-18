@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
+import 'base.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final _routes = <String, WidgetBuilder>{
+    Login.tag: (context) => Login(),
+    Base.tag: (context) => Base()
+  };
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-//      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp(
+      title: 'Login Screen App',
+      home: Login(),
+      routes: _routes,
     );
   }
 }
