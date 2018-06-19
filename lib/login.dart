@@ -19,26 +19,9 @@ class _LoginState extends State<Login> {
       ),
     );
 
-    final editLogin = TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      initialValue: 'test@gmail.com',
-      decoration: InputDecoration(
-        labelText: 'Email',
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.0)),
-      ),
-    );
-
-    final editPassword = TextFormField(
-      autofocus: false,
-      initialValue: 'password',
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: 'Password',
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.0)),
-      ),
-    );
-
+    final editLogin = _buildTextField('Email', false);
+    final editPassword = _buildTextField('Password', true);
+    
     final btnLogin = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
@@ -50,10 +33,9 @@ class _LoginState extends State<Login> {
           splashColor: Colors.cyanAccent,
           child: Text('Sign In',
               style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0
-              )),
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0)),
         ),
       ),
     );
@@ -78,6 +60,20 @@ class _LoginState extends State<Login> {
             btnLogin,
             forgotPass,
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String label, bool isPassword){
+    return new Theme(
+      data: Theme.of(context).copyWith(primaryColor: Colors.cyan),
+      child: TextFormField(
+        obscureText: isPassword,
+        autofocus: false,
+        decoration: InputDecoration(
+          labelText: label,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.0))
         ),
       ),
     );
