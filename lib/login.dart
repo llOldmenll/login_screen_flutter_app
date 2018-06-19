@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'base.dart';
 
 class Login extends StatefulWidget {
   static final String tag = 'login-page';
@@ -28,7 +29,9 @@ class _LoginState extends State<Login> {
         borderRadius: BorderRadius.circular(30.0),
         child: MaterialButton(
           height: 48.0,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(Base.tag);
+          },
           color: Colors.cyan,
           splashColor: Colors.cyanAccent,
           child: Text('Sign In',
